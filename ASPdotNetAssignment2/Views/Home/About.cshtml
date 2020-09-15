@@ -1,0 +1,32 @@
+﻿@model IEnumerable<ASPdotNetAssignment2.Models.SchoolViewModels.EnrollmentDateGroup>
+
+@{ 
+    ViewData["Title"] = "Student Statistics by Date";
+}
+
+<h2>Studen Statistics by Date</h2>
+
+<table>
+    <tr>
+        <th>
+            Enrollment Date
+        </th>
+        <th>
+            Students
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnrollmentDate)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @item.StudentCount
+            </td>
+        </tr>
+    }
+</table>
