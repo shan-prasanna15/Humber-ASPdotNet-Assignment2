@@ -8,32 +8,36 @@ using System.Threading.Tasks;
 
 namespace ASPdotNetAssignment2.Models
 {
-    public class Student
+    public class Instructor
     {
         public int ID { get; set; }
+
         [Required]
-        [StringLength(50)]
-        [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
         [DisplayName("Last Name")]
-        public string LastName { get; set; }
-        [Required]
         [StringLength(50)]
-        [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
+        public string LastName { get; set; }
+
+        [Required]
+        [Column("FirstName")]
         [DisplayName("First Name")]
-        public string FirstName { get; set; }
-        [DisplayName("Enrollment Date")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString ="{0:yyyy-MM-dd}", ApplyFormatInEditMode =true)]
-        public DateTime EnrollmentDate { get; set; }
+        [StringLength(50)]
+        public string FirstMidName { get; set; }
+
+        [DataType(DataType.Date), Display(Name = "Hire Date"), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime HireDate { get; set; }
+
         [DisplayName("Full Name")]
         public string FullName
         {
             get
             {
-                return LastName + " " + FirstName;
+                return LastName + " " + FirstMidName;
             }
         }
 
-        public ICollection<Enrollment> Enrollments{ get; set; }
+        public ICollection<CourseAssignment> CourseAssignments{ get; set; }
+        public OfficeAssignment OfficeAssignmet { get; set; }
+
+
     }
 }
