@@ -21,7 +21,10 @@ namespace ASPdotNetAssignment2.Controllers
         // GET: Courses
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Courses.ToListAsync());
+            var courses = _context.Courses
+            .Include(c => c.Department)
+            .AsNoTracking();
+            return View(await courses.ToListAsync());
         }
 
         // GET: Courses/Details/5

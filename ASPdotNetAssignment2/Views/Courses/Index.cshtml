@@ -1,8 +1,10 @@
 ﻿@model IEnumerable<ASPdotNetAssignment2.Models.Course>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Courses";
 }
+
+<h2>Courses</h2>
 
 <h1>Index</h1>
 
@@ -13,10 +15,16 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.CourseID)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Credits)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department)
             </th>
             <th></th>
         </tr>
@@ -25,10 +33,16 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.CourseID)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Credits)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department.Name)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.CourseID">Edit</a> |
