@@ -232,7 +232,6 @@ namespace ASPdotNetAssignment2.Controllers
                 }
                 else
                 {
-
                     if (instructorCourses.Contains(course.CourseID))
                     {
                         CourseAssignment courseToRemove = instructorToUpdate.CourseAssignments.FirstOrDefault(i => i.CourseID == course.CourseID);
